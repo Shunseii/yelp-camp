@@ -1,18 +1,22 @@
-var mongoose 	= require("mongoose"),
-	bodyParser 	= require("body-parser"),
-	express 	= require("express"),
-	app 		= express(),
-	Campground 	= require("./models/campgrounds"),
-	Comment 	= require('./models/comment'),
-	seedDB		= require('./seeds');
-
-seedDB();
+var mongoose 				= require("mongoose"),
+	bodyParser 				= require("body-parser"),
+	express 				= require("express"),
+	passport 				= require('passport'),
+	LocalStrategy 			= require('passport-local'),
+	passportLocalMongoose 	= require('passport-local-mongoose'),
+	app 					= express(),
+	Campground 				= require("./models/campgrounds"),
+	Comment 				= require('./models/comment'),
+	User 					= require('./models/user'),
+	seedDB					= require('./seeds');
 
 mongoose.set("useNewUrlParser", "true");
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+
+seedDB();
 
 // ROUTES 
 
