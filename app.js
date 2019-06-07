@@ -48,7 +48,7 @@ app.get("/campgrounds", function(req, res) {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render("campgrounds/index", {camps: campgrounds, currentUser: req.user});
+			res.render("campgrounds/index", {camps: campgrounds});
 		}
 	});
 });
