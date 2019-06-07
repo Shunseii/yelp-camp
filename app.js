@@ -4,6 +4,7 @@ var mongoose 				= require("mongoose"),
 	passport 				= require('passport'),
 	LocalStrategy 			= require('passport-local'),
 	passportLocalMongoose 	= require('passport-local-mongoose'),
+	methodOverride			= require('method-override'),
 	app 					= express(),
 	Campground 				= require("./models/campground"),
 	Comment 				= require('./models/comment'),
@@ -16,6 +17,8 @@ var indexRoutes = require('./routes/index');
 
 mongoose.set("useNewUrlParser", "true");
 mongoose.connect("mongodb://localhost/yelp_camp");
+
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
