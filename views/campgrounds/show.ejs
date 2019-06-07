@@ -16,16 +16,19 @@
 				<div class="caption-full">
 					<h4 class="pull-right">$9.00/night</h4>
 					<h4><a><%= camp.name %></a></h4>
-					<p><%= camp.description %></p>
 					<p><em>Submitted by: <%= camp.author.username %></em></p>
+					<p><%= camp.description %></p>
 					<a class="btn btn-warning" href="/campgrounds/<%= camp._id %>/edit">Edit</a>
+					<form id="deleteForm" action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-danger">Delete</button>
+					</form>
 				</div>
 			</div>
+			<div class="text">
+				<a class="btn btn-success" href="/campgrounds/<%= camp._id %>/comments/new">Comment</a>
+			</div>
+			<hr>
 			<div class="well">
-				<div class="text">
-					<a class="btn btn-success" href="/campgrounds/<%= camp._id %>/comments/new">Comment</a>
-				</div>
-				<hr>
 				<% for (var i = 0; i < camp.comments.length; ++i) { %>
 					<div class="row">
 						<div class="col-md-12">
