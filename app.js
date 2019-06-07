@@ -142,6 +142,11 @@ app.post("/login", passport.authenticate("local", {
 	failureRedirect: "/login"
 }), function(req, res) {});
 
+app.get("/logout", function(req, res) {
+	req.logout();
+	res.redirect("/campgrounds");
+});
+
 app.listen(3000, function() {
 	console.log("YelpCamp Server started on port 3000.");
 });
