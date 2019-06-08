@@ -37,10 +37,12 @@
 							<strong><%= camp.comments[i].author.username %></strong>
 							<span class="pull-right">10 Days Ago</span>
 							<p><%= camp.comments[i].text %></p>
-							<a class="btn btn-xs btn-warning" href="/campgrounds/<%= camp._id %>/comments/<%= camp.comments[i]._id %>/edit">Edit</a>
-							<form class="deleteForm" action="/campgrounds/<%= camp._id %>/comments/<%= camp.comments[i]._id %>?_method=DELETE" method="POST">
-								<button class="btn btn-xs btn-danger">Delete</button>
-							</form>
+							<% if (currentUser && camp.comments[i].author.id.equals(currentUser._id)) { %>
+								<a class="btn btn-xs btn-warning" href="/campgrounds/<%= camp._id %>/comments/<%= camp.comments[i]._id %>/edit">Edit</a>
+								<form class="deleteForm" action="/campgrounds/<%= camp._id %>/comments/<%= camp.comments[i]._id %>?_method=DELETE" method="POST">
+									<button class="btn btn-xs btn-danger">Delete</button>
+								</form>
+							<% } %>
 						</div>
 					</div>
 				<% } %>
